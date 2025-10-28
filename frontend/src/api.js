@@ -19,9 +19,22 @@ export async function fetchBorrowers() {
   return res.data;
 }
 
-export async function createBorrower(payload) {
-  const res = await api.post("/borrowers/", payload);
-  return res.data;
+export async function createBorrower(data) {
+  return axios
+    .post("http://localhost:8000/api/borrowers/", data)
+    .then((res) => res.data)
+    .catch((err) => {
+      throw err;
+    });
+}
+
+export async function getBorrowers() {
+  return axios
+    .get("http://localhost:8000/api/borrowers/list/")
+    .then((res) => res.data)
+    .catch((err) => {
+      throw err;
+    });
 }
 
 export async function createLoan(payload) {
